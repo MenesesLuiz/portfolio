@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/mns/%C3%81rea%20de%20trabalho/Portfolio/app/layout.tsx"],"sourcesContent":["import type { Metadata } from \"next\";\nimport \"@fontsource-variable/jetbrains-mono\";\nimport \"@fontsource-variable/manrope\";\nimport \"./globals.css\";\n\nexport const metadata: Metadata = {\n  title: \"Portfolio\",\n  description: \"Software Engineering, Cybersecurity, and Web Development.\",\n};\n\nexport default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {\n  return (\n    <html lang=\"pt-BR\" suppressHydrationWarning>\n      <body>{children}</body>\n    </html>\n  );\n}\n"],"names":["metadata","title","description","RootLayout","children","lang","suppressHydrationWarning"],"mappings":";;;;;;;;;;;AAKO,MAAMA,WAAqB;IAChCC,OAAO;IACPC,aAAa;AACf;AAEe,SAASC,WAAW,EAAEC,QAAQ,EAA2C;IACtF,qBACE,8OAAC;QAAKC,MAAK;QAAQC,wBAAwB;kBACzC,cAAA,8OAAC;sBAAMF;;;;;;;;;;;AAGb"}},
+    {"offset": {"line": 44, "column": 0}, "map": {"version":3,"sources":["file:///home/mns/%C3%81rea%20de%20trabalho/Portfolio/node_modules/next/src/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = (\n  require('../../module.compiled') as typeof import('../../module.compiled')\n).vendored['react-rsc']!.ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":"AAAAA,OAAOC,OAAO,GACZC,QAAQ,4HACRC,QAAQ,CAAC,YAAY,CAAEC,kBAAkB","ignoreList":[0]}}]
+}
