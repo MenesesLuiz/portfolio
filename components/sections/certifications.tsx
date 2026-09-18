@@ -1,35 +1,7 @@
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { certifications } from "@/content/portfolio";
-import { Reveal } from "@/components/motion/reveal";
-import { CertificateCarousel } from "@/components/ui/certificate-carousel";
-import { SpecialText } from "@/components/ui/special-text";
+import { CertificateCarousel } from "@/components/sections/certificate-carousel";
 
 export function Certifications() {
-  return (
-    <section id="certificacoes" className="scroll-mt-16">
-      <div className="shell relative pb-8 md:pb-10">
-        <div className="relative flex min-h-24 items-center">
-          <div aria-hidden="true" className="absolute left-4 top-0 h-12 w-px bg-[var(--line)]">
-            <div className="absolute -bottom-4 -left-[15px] grid size-8 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)]">
-              <div className="size-2 rounded-full bg-[var(--accent)]" />
-            </div>
-          </div>
-          <Reveal className="w-full">
-            <h2 className="max-w-2xl pl-16 text-3xl font-semibold tracking-[-0.025em] md:text-5xl">
-              <SpecialText inView speed={16} className="font-sans font-semibold">
-                Certificações
-              </SpecialText>
-            </h2>
-          </Reveal>
-        </div>
-
-        {certifications.length === 0 ? (
-          <Reveal delay={0.08} className="mt-10 max-w-xl text-sm leading-6 text-[var(--muted)]">
-            Credenciais profissionais serão publicadas aqui.
-          </Reveal>
-        ) : (
-          <CertificateCarousel items={certifications} />
-        )}
-      </div>
-    </section>
-  );
+  return <section id="certificacoes" className="section-rule scroll-mt-20" aria-labelledby="certificacoes-titulo"><div className="shell py-20 md:py-28"><ScrollReveal><div className="grid gap-8 md:grid-cols-12"><div className="md:col-span-5"><h2 id="certificacoes-titulo" className="display text-5xl font-semibold md:text-6xl">Certificações como evidência de estudo.</h2></div><p className="copy self-end md:col-span-4 md:col-start-9">Uma seleção direta de formações complementares em desenvolvimento e segurança.</p></div></ScrollReveal><ScrollReveal><CertificateCarousel certifications={certifications} /></ScrollReveal></div></section>;
 }

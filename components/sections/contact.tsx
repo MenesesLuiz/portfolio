@@ -1,0 +1,10 @@
+"use client";
+
+import { ArrowUpRight, EnvelopeSimple, GithubLogo } from "@phosphor-icons/react";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { KineticText } from "@/components/motion/kinetic-text";
+import { profile } from "@/content/portfolio";
+
+export function Contact() {
+  return <section id="contato" className="section-rule scroll-mt-20" aria-labelledby="contato-titulo"><div className="shell py-20 md:py-28"><ScrollReveal><div className="grid gap-10 border-t border-[var(--line)] pt-8 md:grid-cols-12 md:items-end"><h2 id="contato-titulo" className="display max-w-3xl text-5xl font-semibold md:col-span-8 md:text-7xl">Vamos conversar sobre a próxima oportunidade.</h2><div className="md:col-span-3 md:col-start-10"><p className="copy">Disponível para conhecer pessoas, desafios técnicos e oportunidades de estágio ou trabalho.</p></div></div></ScrollReveal><div className="mt-14 grid gap-px bg-[var(--line)] sm:grid-cols-2"><a href={`mailto:${profile.email}`} className="group bg-[var(--ink)] p-6 transition-colors hover:bg-[var(--surface-raised)] md:p-8"><EnvelopeSimple size={28} aria-hidden="true" className="text-[var(--silver)]" /><p className="mono mt-14 text-[var(--muted)]">E-mail</p><p className="mt-3 break-all text-xl font-semibold tracking-[-.035em] sm:text-2xl">{profile.email}</p><span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold"><KineticText text="Escrever mensagem" /> <ArrowUpRight size={16} aria-hidden="true" /></span></a><a href={profile.githubUrl} target="_blank" rel="noreferrer" className="group bg-[var(--ink)] p-6 transition-colors hover:bg-[var(--surface-raised)] md:p-8"><GithubLogo size={28} aria-hidden="true" className="text-[var(--silver)]" /><p className="mono mt-14 text-[var(--muted)]">GitHub</p><p className="mt-3 text-xl font-semibold tracking-[-.035em] sm:text-2xl">github.com/MenesesLuiz</p><span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold"><KineticText text="Ver repositórios" /> <ArrowUpRight size={16} aria-hidden="true" /></span></a></div></div></section>;
+}

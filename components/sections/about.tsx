@@ -1,90 +1,11 @@
-"use client";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
-import type { ReactNode } from "react";
-import { SpecialText } from "@/components/ui/special-text";
-import { Timeline, type TimelineEntry } from "@/components/ui/timeline";
-
-function Highlight({ children, mono = false }: { children: ReactNode; mono?: boolean }) {
-  return (
-    <mark className={`bg-transparent font-semibold text-[var(--accent-text)] ${mono ? "font-mono" : ""}`}>
-      {children}
-    </mark>
-  );
-}
-
-const timelineData: TimelineEntry[] = [
-  {
-    title: "2014-2016",
-    content: (
-      <p className="max-w-xl text-base leading-7 text-[var(--muted)]">
-        Foi a época em que utilizava notebooks no dia a dia, mas já sabia operar um desktop sem problemas.
-        Modificações no <Highlight mono>%appdata%</Highlight> e no <Highlight mono>regedit</Highlight> eram
-        diárias. Comecei a explorar as mais diversas áreas da computação e de <Highlight>hardware</Highlight> por
-        meio de vídeos no YouTube.
-      </p>
-    ),
-  },
-  {
-    title: "2017-2020",
-    content: (
-      <p className="max-w-xl text-base leading-7 text-[var(--muted)]">
-        Ganhei meu primeiro desktop e tive <Highlight>contato direto com o hardware</Highlight> físico. Foi a época em
-        que aprendi na prática como funcionava um computador, montando e desmontando tudo sozinho.
-      </p>
-    ),
-  },
-  {
-    title: "2021-2024",
-    content: (
-      <p className="max-w-xl text-base leading-7 text-[var(--muted)]">
-        Tive meu primeiro contato com linguagens de marcação e entrei de vez no mundo da programação. <Highlight mono>HTML</Highlight>{" "}
-        e <Highlight mono>CSS</Highlight> eram incríveis para mim; logo depois, comecei com <Highlight mono>Python</Highlight>.
-        Em 2024, ingressei no curso de <Highlight>Engenharia de Software</Highlight> pela{" "}
-        <Highlight>Universidade do Estado do Pará</Highlight> (<Highlight mono>5/8</Highlight>).
-      </p>
-    ),
-  },
-  {
-    title: "2025-Atual",
-    content: (
-      <p className="max-w-xl text-base leading-7 text-[var(--muted)]">
-        Durante minha trajetória na tecnologia, o interesse por <Highlight>cibersegurança</Highlight> falou mais alto.
-        Ingressei na{" "}
-        <Highlight>Faculdade de Informática e Administração Paulista (FIAP)</Highlight>, no curso de{" "}
-        <Highlight>Defesa Cibernética</Highlight> (<Highlight mono>2/4</Highlight>), com foco técnico em{" "}
-        <Highlight>Cloud Security</Highlight>.
-      </p>
-    ),
-  },
-  {
-    title: "Plus",
-    content: (
-      <p className="max-w-xl text-base leading-7 text-[var(--muted)]">
-        Durante todos esses anos, também aprendi a comandar <Highlight>Inteligências Artificiais</Highlight> e, mais
-        recentemente, <Highlight>agentes de IA</Highlight>. Hoje, desenvolvo sites utilizando essas ferramentas, unindo
-        o conhecimento de infraestrutura, programação e segurança que adquiri ao longo da minha jornada.
-      </p>
-    ),
-  },
+const path = [
+  ["2014 — 2020", "A curiosidade começou no hardware: aprender a operar, montar e entender computadores na prática."],
+  ["2021 — 2024", "O contato com HTML, CSS e Python levou à programação. Em 2024, Luiz ingressou em Engenharia de Software na Universidade do Estado do Pará."],
+  ["2025 — atual", "O interesse por cibersegurança direcionou a formação em Defesa Cibernética na FIAP, com foco em Cloud Security."],
 ];
 
 export function About() {
-  return (
-    <section id="sobre">
-      <Timeline
-        data={timelineData}
-        heading={
-          <SpecialText inView speed={16} className="font-sans font-semibold">
-            Sobre mim
-          </SpecialText>
-        }
-        description={
-          <p>
-            Da curiosidade por hardware ao desenvolvimento com agentes de IA, esta é a trajetória que conectou
-            programação, infraestrutura e segurança.
-          </p>
-        }
-      />
-    </section>
-  );
+  return <section id="sobre" className="section-rule scroll-mt-20" aria-labelledby="sobre-titulo"><div className="shell py-20 md:py-28"><ScrollReveal><div className="grid gap-8 md:grid-cols-12"><div className="md:col-span-5"><h2 id="sobre-titulo" className="display text-5xl font-semibold md:text-7xl">Uma trajetória guiada por entender como as coisas funcionam.</h2></div><div className="md:col-span-5 md:col-start-8"><p className="copy">Da exploração de hardware ao desenvolvimento com agentes de IA, a formação conecta programação, infraestrutura e segurança. O interesse está em problemas que exigem entendimento técnico antes de implementação.</p></div></div></ScrollReveal><div className="mt-16 border-t border-[var(--line)]">{path.map(([period, text], index) => <ScrollReveal key={period}><article className="grid gap-5 border-b border-[var(--line)] py-7 md:grid-cols-12 md:py-9"><p className="mono text-[var(--muted)] md:col-span-3">0{index + 1} / {period}</p><p className="max-w-2xl text-lg leading-8 text-[var(--silver)] md:col-span-7">{text}</p></article></ScrollReveal>)}</div></div></section>;
 }

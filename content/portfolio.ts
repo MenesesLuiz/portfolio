@@ -29,6 +29,32 @@ export type EngineeringProject = {
   discipline: "Software Engineering" | "Cybersecurity" | "Web Development";
 };
 
+export const profile = {
+  email: "menesesluizf@gmail.com",
+  githubUrl: "https://github.com/MenesesLuiz",
+};
+
+export const education = [
+  {
+    institution: "Universidade do Estado do Pará",
+    shortName: "UEPA",
+    program: "Engenharia de Software",
+    period: "2024 — atual",
+    logo: "https://www.uepa.br/themes/custom/mycustom_barrio/images/logo_uepa.png",
+    logoAlt: "Logo da Universidade do Estado do Pará",
+    cropToMark: true,
+  },
+  {
+    institution: "FIAP",
+    shortName: "FIAP",
+    program: "Defesa Cibernética",
+    period: "2025 — atual",
+    logo: "https://www.fiap.com.br/svg/fiap.svg",
+    logoAlt: "Logo da FIAP",
+    cropToMark: false,
+  },
+];
+
 export const certifications: Certification[] = [
   {
     title: "Python com Orientação a Objetos",
@@ -54,6 +80,14 @@ export const certifications: Certification[] = [
     image: "/assets/certificado-wazuh.webp",
     imageWidth: 3509,
     imageHeight: 2481,
+  },
+  {
+    title: "Bootcamp | AWS AI FDE Agentic Payments",
+    issuer: "AIR",
+    issuedAt: "Setembro de 2026",
+    image: "/assets/AIR.webp",
+    imageWidth: 1920,
+    imageHeight: 1080,
   },
 ];
 export const technicalSkills: TechnicalSkill[] = [

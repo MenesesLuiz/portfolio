@@ -1,49 +1,14 @@
+import Image from "next/image";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { technicalSkills } from "@/content/portfolio";
-import { Reveal } from "@/components/motion/reveal";
-import { Marquee } from "@/components/ui/marquee";
-import { SpecialText } from "@/components/ui/special-text";
+
+const stackNames = ["Python", "Git", "GitHub", "Amazon Web Services", "Docker", "Linux", "Node.js", "MySQL", "Postman", "Visual Studio Code", "PowerShell"];
 
 export function TechStack() {
-  return (
-    <section id="stack" className="scroll-mt-16">
-      <div className="shell pb-20 pt-8 md:pb-28 md:pt-12">
-        <Reveal>
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.025em] md:text-5xl">
-            <SpecialText inView speed={16} className="font-sans font-semibold">
-            Tech Stack
-            </SpecialText>
-          </h2>
-        </Reveal>
-
-        {technicalSkills.length > 0 ? (
-          <Marquee
-            pauseOnHover
-            direction="right"
-            speed={34}
-            className="mt-8"
-            aria-label="Tecnologias e ferramentas"
-          >
-            {technicalSkills.map((skill) => (
-              <figure key={skill.name} className="mx-7 flex size-20 shrink-0 items-center justify-center p-3 md:mx-10 md:size-24 md:p-4">
-                <img
-                  src={skill.icon}
-                  alt={skill.name}
-                  title={skill.name}
-                  width={64}
-                  height={64}
-                  loading="lazy"
-                  draggable={false}
-                  className="size-full select-none object-contain transition-transform duration-200 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
-                />
-              </figure>
-            ))}
-          </Marquee>
-        ) : (
-          <Reveal delay={0.08} className="mt-10 max-w-xl text-base leading-7 text-[var(--muted)]">
-            Tecnologias e ferramentas serão organizadas por especialidade.
-          </Reveal>
-        )}
-      </div>
-    </section>
-  );
+  const stackItems = stackNames.map((name) => {
+    const skill = technicalSkills.find((item) => item.name === name);
+    return <div key={name} role="listitem" className="tech-stack-item">{skill ? <Image src={skill.icon} alt={name} width={56} height={56} className="tech-stack-icon" /> : null}</div>;
+  });
+  return <section id="stack" className="section-rule scroll-mt-20" aria-labelledby="stack-titulo"><div className="shell py-20 md:py-28"><ScrollReveal><div className="flex items-end gap-4 sm:gap-6"><h2 id="stack-titulo" className="display text-5xl font-semibold md:text-7xl">Tech Stack</h2><Image src="/assets/logos/MeneseLuiz-Corpo.png" alt="Ilustração de corpo inteiro de Luiz Meneses" width={1254} height={1254} className="tech-stack-portrait" /></div></ScrollReveal><ScrollReveal><div role="list" aria-label="Tecnologias" className="mt-12"><InfiniteSlider gap={36} duration={38} className="tech-stack-slider">{stackItems}</InfiniteSlider></div></ScrollReveal></div></section>;
 }

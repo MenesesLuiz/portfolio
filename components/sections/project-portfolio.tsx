@@ -1,29 +1,7 @@
-"use client";
-
-import { GithubLogo } from "@phosphor-icons/react";
+import Image from "next/image";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { engineeringProjects } from "@/content/portfolio";
-import { Reveal } from "@/components/motion/reveal";
-import { SpecialText } from "@/components/ui/special-text";
 
 export function ProjectPortfolio() {
-  return (
-    <section id="projetos" className="section-rule">
-      <div className="shell py-20 md:py-28">
-        <Reveal>
-          <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.025em] md:text-5xl">
-            <SpecialText inView speed={16} className="font-sans font-semibold">
-            Projetos
-            </SpecialText>
-          </h2>
-        </Reveal>
-
-        {engineeringProjects.length === 0 ? (
-          <Reveal delay={0.08} className="mt-10 flex items-center gap-2 text-sm text-[var(--muted)]">
-            Repositórios selecionados serão adicionados.
-            <GithubLogo size={18} aria-hidden="true" />
-          </Reveal>
-        ) : null}
-      </div>
-    </section>
-  );
+  return <section id="projetos" className="section-rule scroll-mt-20" aria-labelledby="projetos-titulo"><div className="shell py-20 md:py-28"><ScrollReveal><div className="grid gap-8 md:grid-cols-12"><div className="md:col-span-7"><h2 id="projetos-titulo" className="display text-4xl font-semibold sm:text-5xl md:text-7xl">Estudos de engenharia em primeiro plano.</h2></div><p className="copy self-end md:col-span-4 md:col-start-9">Cada projeto será apresentado pelo problema que resolve, decisões técnicas e tecnologias que o sustentam.</p></div></ScrollReveal>{engineeringProjects.length ? <div className="mt-16 space-y-6">{engineeringProjects.map((project, index) => <ScrollReveal key={project.title}><article className="grid overflow-hidden border border-[var(--line)] md:grid-cols-12"><div className="relative min-h-64 bg-[var(--surface-raised)] md:col-span-7"><Image src={project.image} alt={`Preview do projeto ${project.title}`} fill className="object-cover" /></div><div className="flex flex-col p-6 md:col-span-5 md:p-8"><p className="mono text-[var(--muted)]">0{index + 1} / {project.discipline}</p><h3 className="mt-12 text-3xl font-semibold tracking-[-.045em]">{project.title}</h3><p className="copy mt-4">{project.summary}</p><a href={project.githubUrl} target="_blank" rel="noreferrer" className="button-secondary mt-8 w-fit">GitHub <span aria-hidden="true">↗</span></a></div></article></ScrollReveal>)}</div> : <ScrollReveal className="mt-14"><div className="border-t border-[var(--line)] py-8"><div className="md:grid md:grid-cols-12 md:gap-8"><p className="mono text-[var(--silver)] md:col-span-3">Em construção</p><p className="copy mt-4 max-w-2xl md:col-span-6 md:mt-0">Os principais projetos estão sendo finalizados. Assim que estiverem prontos, esta seção receberá seus cases completos.</p></div><ol className="mt-8 grid w-full border-l border-t border-[var(--line)] md:grid-cols-3">{["Construindo", "Documentando", "Publicando"].map((step, index) => <li key={step} className="min-h-32 border-b border-r border-[var(--line)] p-4"><span className="mono text-[var(--subtle)]">0{index + 1}</span><p className="mt-8 text-sm font-semibold">{step}</p></li>)}</ol></div></ScrollReveal>}</div></section>;
 }
